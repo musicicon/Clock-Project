@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+    <title>Clock IST</title>
+    <style>
+        .jumbotron {
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <div class="container my-4">   
+        <div class="jumbotron">
+            <h1 class="display-4">Current time is: <span id="time"></span> </h1>
+            <p class="lead">This clock tells you about the current time in India. </p>
+            <hr class="my-4">
+            <p>Trivia:</p>
+            <p>The IST is a meridian passing through Allahabad in Uttar Pradesh</p>
+        </div>
+    </div>
+
+
+    <script>
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        let hour = undefined;
+        let min = undefined;
+        let sec = undefined;
+        setInterval(datetimefunction, 1000)
+        function datetimefunction() {
+            let a = new Date();
+            let date = a.toLocaleDateString(undefined, options);
+            if (a.getHours() < 10) {
+                hour = "0" + a.getHours()
+            }
+            else {
+                hour = a.getHours()
+            }
+            if (a.getMinutes() < 10) {
+                min = "0" + a.getMinutes()
+            }
+            else {
+                min = a.getMinutes()
+            }
+            if (a.getSeconds() < 10) {
+                sec = "0" + a.getSeconds()
+            }
+            else {
+                sec = a.getSeconds()
+            }
+            let time = (hour + ":" + min + ":" + sec);
+            document.getElementById("time").innerHTML = time + " <br>on " + date;
+        }
+    </script>
+</body>
+
+</html>
